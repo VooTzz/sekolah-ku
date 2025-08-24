@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran - SMA Negeri 1 Unggulan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="script.js" defer></script>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navigation-active {
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .input-focus:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .form-section {
+            transition: all 0.3s ease;
+        }
+
+        .form-section:hover {
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+                    <a href="tentang.html" class="text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+                    <a href="prestasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+                    <a href="organisasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+                    <a href="fasilitas.html" class="text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+                    <a href="guru.html" class="text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+                    <a href="kontak.html" class="text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></极>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-40 md:hidden p-6">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+            </div>
+            <button id="close-menu" class="text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <a href="index.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+            <a href="tentang.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+            <a href="prestasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+            <a href="organisasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+            <a href="fasilitas.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+            <a href="guru.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+            <a href="kontak.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Pendaftaran <span class="gradient-text">Siswa Baru</span>
+            </h1>
+            <p class="text-xl mb-8">
+                Bergabunglah dengan SMA Negeri 1 Unggulan untuk masa depan yang lebih cerah
+            </p>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Formulir Pendaftaran</h2>
+                
+                <form id="registration-form" class="space-y-8">
+                    <!-- Data Pribadi -->
+                    <div class="form-section border-2 border-gray-100 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-user-circle text-blue-600 mr-3"></i>
+                            Data Pribadi Calon Siswa
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Nama Lengkap <span class="text-red-500">*</span></label>
+                                <input type="text" name="nama_lengkap" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       placeholder="Nama lengkap sesuai akte"
+                                       required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Nama Panggilan</label>
+                                <input type="text" name="nama_panggilan" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       placeholder="Nama panggilan">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Tempat Lahir <span class="text-red-500">*</span></label>
+                                <input type="text" name="tempat_lahir" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       placeholder="Kota kelahiran"
+                                       required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Tanggal Lahir <span class="text-red-500">*</span></label>
+                                <input type="date" name="tanggal_lahir" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Jenis Kelamin <span class="text-red-500">*</span></label>
+                                <select name="jenis_kelamin" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none" required>
+                                    <option value="">Pilih jenis kelamin</option>
+                                    <option value="Laki-laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4 mt-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Agama <span class="text-red-500">*</span></label>
+                                <select name="agama" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none" required>
+                                    <option value="">Pilih agama</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Katolik">Katolik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Buddha">Buddha</option>
+                                    <option value="Konghucu">Konghucu</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Telepon/HP <span class="text-red-500">*</span></label>
+                                <input type="tel" name="telepon" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       placeholder="08xxxxxxxxxx"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <label class="block text-gray-700 mb-2 font-medium">Alamat Lengkap <span class="text-red-500">*</span></label>
+                            <textarea name="alamat" 
+                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                     rows="3"
+                                     placeholder="Alamat lengkap tempat tinggal"
+                                     required></textarea>
+                        </div>
+
+                        <div class="mt-4">
+                            <label class="block text-gray-700 mb-2 font-medium">Email <span class="text-red-500">*</span></label>
+                            <input type="email" name="email" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                   placeholder="email@contoh.com"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- Data Sekolah Asal -->
+                    <div class="form-section border-2 border-gray-100 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-school text-green-600 mr-3"></i>
+                            Data Sekolah Asal
+                        </h3>
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium">Nama Sekolah Asal <span class="text-red-500">*</span></label>
+                            <input type="text" name="asal_sekolah" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                   placeholder="Nama SMP/MTs asal"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- Data Orang Tua -->
+                    <div class="form-section border-2 border-gray-100 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-users text-purple-600 mr-3"></i>
+                            Data Orang Tua/Wali
+                        </h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Nama Orang Tua/Wali <span class="text-red-500">*</span></label>
+                                <input type="text" name="nama_orangtua" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       placeholder="Nama lengkap orang tua"
+                                       required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Pekerjaan Orang Tua</label>
+                                <input type="text" name="pekerjaan_orangtua" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       placeholder="Pekerjaan orang tua">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label class="block text-gray-700 mb-2 font-medium">Telepon/HP Orang Tua <span class="text-red-500">*</span></label>
+                            <input type="tel" name="telepon_orangtua" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                   placeholder="08xxxxxxxxxx"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- Pilihan Jurusan -->
+                    <div class="form-section border-2 border-gray-100 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fas fa-graduation-cap text-orange-600 mr-3"></i>
+                            Pilihan Jurusan
+                        </h3>
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium">Jurusan yang Dipilih <span class="text-red-500">*</span></label>
+                            <select name="jurusan_pilihan" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none" required>
+                                <option value="">Pilih jurusan</option>
+                                <option value="IPA">Ilmu Pengetahuan Alam (IPA)</option>
+                                <option value="IPS">Ilmu Pengetahuan Sosial (IPS)</option>
+                                <option value="Bahasa">Bahasa dan Budaya</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" 
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i>Kirim Pendaftaran
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Pendaftaran -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Informasi Pendaftaran</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Proses dan persyaratan pendaftaran siswa baru</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Periode Pendaftaran</h3>
+                    <p class="text-gray-600">1 Januari - 30 Juni 2024</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-file-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Persyaratan</h3>
+                    <p class="text-gray-600">Foto, Raport, Akte Kelahiran</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-question-circle text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Butuh Bantuan?</h3>
+                    <p class="text-gray-600">Hubungi kami untuk informasi lebih lanjut</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-2xl font-bold">SMA<span class="text-blue-400">NEGERI1</span></span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Mencetak generasi unggul yang berprestasi, berkarakter, dan siap menghadapi masa depan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Menu Utama</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Beranda</a></li>
+                        <li><a href="tentang.html" class="text-gray-300 hover:text-white">Tentang Sekolah</a></li>
+                        <li><a href="prestasi.html" class="text-gray-300 hover:text-white">Prestasi</a></li>
+                        <li><a href="organisasi.html" class="text-gray-300 hover:text-white">Organisasi</a></li>
+                        <li><a href="fasilitas.html" class="text-gray-300 hover:text-white">Fasilitas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Informasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="guru.html" class="text-gray-300 hover:text-white">Guru & Staff</a></li>
+                        <li><a href="berita.html" class="text-gray-300 hover:text-white">Berita</a></li>
+                        <li><a href="galeri.html" class="text-gray-300 hover:text-white">Galeri</a></li>
+                        <li><a href="daftar.html" class="text-gray-300 hover:text-white">Pendaftaran</a></li>
+                        <li><a href="kontak.html" class="text-gray-300 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Kontak Kami</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Jl. Pendidikan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">info@smanegeri1.sch.id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">© 2024 SMA Negeri 1 Unggulan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
