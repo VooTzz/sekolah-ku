@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisasi - SMA Negeri 1 Unggulan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navigation-active {
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .org-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .org-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .org-badge {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .org-badge:hover::before {
+            left: 100%;
+        }
+
+        .category-filter {
+            transition: all 0.3s ease;
+        }
+
+        .category-filter.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .leadership-card {
+            transition: all 0.3s ease;
+        }
+
+        .leadership-card:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full极 items-center justify-center text-white font-bold text-xl mr-3">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+                    <a href="tentang.html" class="text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+                    <a href="prestasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+                    <a href="organisasi.html" class="text-gray-700 hover:text-blue-600 font-medium navigation-active">Organisasi</a>
+                    <a href="fasilitas.html" class="text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+                    <a href="guru.html" class="text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+                    <a href="kontak.html" class="text-gray-700 hover:text-blue-600 font极">Kontak</a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-40 md:hidden p-6">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI极</span></span>
+            </div>
+            <button id="close-menu" class="text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <a href="index.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+            <极 href="tentang.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+            <a href="prestasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+            <a href="organisasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+            <a href="fasilitas.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+            <a href="guru.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+            <a href="kontak.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Organisasi <span class="gradient-text">Sekolah</span>
+            </h1>
+            <p class="text-xl mb-8">
+                Wadah pengembangan bakat, minat, dan leadership siswa melalui berbagai kegiatan organisasi
+            </p>
+        </div>
+    </section>
+
+    <!-- Organization Stats -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">12+</div>
+                    <p class="text-gray-600">Organisasi Aktif</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-3xl font-bold text-green-600 mb-2">500+</div>
+                    <p class="text-gray-600">Anggota Organisasi</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-3xl font-bold text-orange-600 mb-2">50+</div>
+                    <p class="text-gray-600">Kegiatan Tahunan</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-3xl font-bold text-purple-600 mb-2">15+</div>
+                    <p class="text-gray-600">Tahun Berdiri</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="category-filter bg-blue-600 text-white px-6 py-2 rounded-full font-semibold active">
+                    Semua Organisasi
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    OSIS & MPK
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semib极 border border-gray-300 hover:bg-blue-50">
+                    Pramuka
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    Seni & Budaya
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    Olahraga
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    Sains & Teknologi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Organizations -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Organisasi Utama</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Berbagai organisasi yang aktif berkontribusi dalam pengembangan siswa</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- OSIS -->
+                <div class="org-card bg-white rounded-xl p-8 shadow-lg">
+                    <div class="org-badge bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-users mr-2"></i>Organisasi Inti
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user-tie text-red-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">OSIS</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Organisasi Siswa Intra Sekolah (OSIS) merupakan organisasi resmi yang mewadahi seluruh kegiatan siswa. OSIS bertugas mengkoordinasikan berbagai kegiatan sekolah dan mengembangkan leadership siswa.
+                    </p>
+                    <div class="bg-red-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-semibold text-red-800 mb-2">Program Kerja:</h4>
+                        <ul class="list-disc list-inside text-red-700 space-y-1">
+                            <li>Penyelenggaraan kegiatan sekolah</li>
+                            <li>Pengembangan karakter siswa</li>
+                            <li>Koordinasi kegiatan ekstrakurikuler</li>
+                            <li>Perwakilan siswa dalam forum sekolah</li>
+                        </ul>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-users mr-2"></i>150+ Anggota
+                        </div>
+                        <div class="text-sm text-red-600 font-semibold">
+                            <i class="fas fa-calendar mr-1"></i>Sejak 1990
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pramuka -->
+                <div class="org-card bg-white rounded-xl p-8 shadow-lg">
+                    <div class="org-badge bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-campground mr-2"></i>Wajib
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-tree text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">Pramuka</h3>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        Gerakan Pramuka mengembangkan karakter disiplin, mandiri, dan peduli lingkungan. Kegiatan pramuka meliputi kemah, hiking, pengembangan survival skills, dan kegiatan sosial.
+                    </p>
+                    <div class="bg-green-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-semibold text-green-800 mb-2">Kegiatan Utama:</h4>
+                        <ul class="list-disc list-inside text-green-700 space-y-1">
+                            <li>Perkemahan reguler dan besar</li>
+                            <li>Latihan kepemimpinan</li>
+                            <li>Kegiatan sosial masyarakat</li>
+                            <li>Pengembangan skill outdoor</li>
+                        </ul>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-users mr-2"></i>200+ Anggota
+                        </div>
+                        <div class="text-sm text-green-600 font-semibold">
+                            <i class="fas fa-calendar mr-1"></i>Sejak 1992
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Organizations -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Organisasi Lainnya</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Berbagai organisasi dan klub yang mendukung pengembangan minat dan bakat siswa</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Robotik -->
+                <div class="org-card bg-white rounded-xl p-6">
+                    <div class="org-badge bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-robot mr-2"></i>Sains & Teknologi
+                    </div>
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Klub Robotik</h3>
+                    <p class="text-gray-600 mb-4 text-center">Mengembangkan keterampilan teknologi dan engineering melalui robotik</p>
+                    <div class="text-center">
+                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">45+ Anggota</span>
+                    </div>
+                </div>
+
+                <!-- Paduan Suara -->
+                <div class="org-card bg-white rounded-xl p-6">
+                    <div class="org-badge bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-music mr-2"></i>Seni & Budaya
+                    </div>
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-music text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Paduan Suara</h3>
+                    <p class="text-gray-极 mb-4 text-center">Mengembangkan bakat seni musik dan vokal melalui paduan suara</p>
+                    <div class="text-center">
+                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">60+ Anggota</span>
+                    </div>
+                </div>
+
+                <!-- Basket -->
+                <div class="org-card bg-white rounded-xl p-6">
+                    <div class="org-badge bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-basketball-ball mr-2"></i>Olahraga
+                    </div>
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-basketball-ball text-red-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Klub Basket</h3>
+                    <p class="text-gray-600 mb-4 text-center">Mengembangkan bakat olahraga dan team work melalui basket</p>
+                    <div class="text-center">
+                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">30+ Anggota</span>
+                    </div>
+                </div>
+
+                <!-- Literasi -->
+                <div class="org-card bg-white rounded-xl p-6">
+                    <div class="org-badge bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-book mr-2"></i>Akademik
+                    </div>
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-book text-yellow-600 text-xl"></极>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Klub Literasi</h3>
+                    <p class="text-gray-600 mb-4 text-center">Meningkatkan minat baca dan menulis melalui berbagai kegiatan</p>
+                    <div class="text-center">
+                        <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm">80+ Anggota</span>
+                    </div>
+                </div>
+
+                <!-- English Club -->
+                <div class="org-card bg-white rounded-xl p-6">
+                    <div class="org-badge bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-language mr-2"></i>Bahasa
+                    </div>
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-language text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">English Club</h3>
+                    <p class="text-gray-600 mb-4 text-center">Meningkatkan kemampuan berbahasa Inggris melalui kegiatan interaktif</p>
+                    <div class="text-center">
+                        <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-sm">50+ Anggota</span>
+                    </div>
+                </div>
+
+                <!-- KIR -->
+                <div class="org-card bg-white rounded-xl p-6">
+                    <div class="org-badge bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-microscope mr-2"></i>Penelitian
+                    </div>
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-microscope text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">KIR</h3>
+                    <p class="text-gray-600 mb-4 text-center">Kelompok Ilmiah Remaja untuk pengembangan penelitian ilmiah</p>
+                    <div class="text-center">
+                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">40+ Anggota</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Structure -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Struktur Kepemimpinan</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Para pemimpin organisasi yang bertanggung jawab mengkoordinasikan kegiatan</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="leadership-card bg-white rounded-xl p-6 text-center shadow-md">
+                    <img src="https://placehold.co/120x120" alt="Ketua OSIS SMA Negeri 1 - Ahmad Rizki, siswa kelas 11 dengan prestasi leadership" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Ahmad Rizki</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Ketua OSIS</p>
+                    <p class="text-gray-600 text-sm">Kelas XI IPA 1</p>
+                </div>
+
+                <div class="leadership-card bg-white rounded-xl p-6 text-center shadow-md">
+                    <img src="https://placehold.co/120x120" alt="Ketua Pramuka - Siti Nurhaliza, siswa kelas 11 dengan semangat kepanduan" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Siti Nurhaliza</h3>
+                    <p class="text-green-600 font-semibold mb-2">Ketua Pramuka</p>
+                    <p class="text-gray-600 text-sm">Kelas XI IPS 2</p>
+                </div>
+
+                <div class="leadership-card bg-white rounded-xl p-6 text-center shadow-md">
+                    <img src="https://placehold.co/120x120" alt="Koordinator Robotik - Budi Santoso, siswa kelas 12 dengan bakat teknologi" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Budi Santoso</h3>
+                    <p class="text-blue-600 font-semibold mb-2">Koordinator Robotik</p>
+                    <p class="text-gray-600 text-sm">Kelas XII IPA 3</p>
+                </div>
+
+                <div class="leadership-card bg-white rounded-xl p-6 text-center shadow-md">
+                    <img src="https://placehold.co/120x120" alt="Ketua Paduan Suara - Maria Magdalena, siswa kelas 10 dengan bakat menyanyi" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Maria Magdalena</h3>
+                    <p class="text-purple-600 font-semibold mb-2">Ketua Paduan Suara</p>
+                    <p class="text-gray-600 text-sm">Kelas X IPA 2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activity Timeline -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Kalender Kegiatan</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Jadwal kegiatan organisasi sekolah dalam setahun</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline-item mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Januari - Maret</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Penerimaan anggota baru organisasi</li>
+                        <li>Pelatihan kepemimpinan OSIS</li>
+                        <li>Persiapan kejuaraan robotik regional</li>
+                        <li>Latihan paduan suara untuk festival</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">April - Juni</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Perkemahan pramuka semester genap</li>
+                        <li>Kompetisi basket antar kelas</li>
+                        <li>Festival literasi sekolah</li>
+                        <li>English speech competition</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Juli - September</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Leadership training camp</li>
+                        <li>Pentas seni tahunan</li>
+                        <li>Kegiatan sosial masyarakat</li>
+                        <li>Persiapan lomba sains nasional</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Oktober - Desember</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Perkemahan besar pramuka</li>
+                        <li>Pemilihan ketua OSIS baru</li>
+                        <li>Kegiatan akhir tahun organisasi</li>
+                        <li>Evaluasi dan perencanaan tahun berikutnya</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-2xl font-bold">SMA<span class="text-blue-400">NEGERI1</span></span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Mencetak generasi unggul yang berprestasi, berkarakter, dan siap menghadapi masa depan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Menu Utama</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Beranda</a></li>
+                        <li><a href="tentang.html" class="text-gray-300 hover:text-white">Tentang Sekolah</a></li>
+                        <li><a href="prestasi.html" class="text-gray-300 hover:text-white">Prestasi</a></li>
+                        <li><a href="organisasi.html" class="text-gray-300 hover:text-white">Organisasi</a></li>
+                        <li><a href="fasilitas.html" class="text-gray-300 hover:text-white">Fasilitas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Informasi</极>
+                    <ul class="space-y-2">
+                        <li><a href="guru.html" class="text-gray-300 hover:text-white">Guru & Staff</a></li>
+                        <li><a href="berita.html" class="text-gray-300 hover:text-white">Berita</a></li>
+                        <li><a href="galeri.html" class="text-gray-300 hover:text-white">Galeri</a></li>
+                        <li><a href="pendaftaran.html" class="text-gray-300 hover:text-white">Pendaftaran</a></li>
+                        <li><a href="kontak.html" class="text-gray-300 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Kontak Kami</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Jl. Pendidikan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">info@smanegeri1.sch.id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">© 2024 SMA Negeri 1 Unggulan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+       const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Category filter functionality
+        const categoryButtons = document.querySelectorAll('.category-filter');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
