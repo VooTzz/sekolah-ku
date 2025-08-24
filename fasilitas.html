@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fasilitas - SMA Negeri 1 Unggulan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navigation-active {
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .facility-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .facility-badge {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .facility-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .facility-badge:hover::before {
+            left: 100%;
+        }
+
+        .category-filter {
+            transition: all 0.3s ease;
+        }
+
+        .category-filter.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+                    <a href="tentang.html" class="text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+                    <a href="prestasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+                    <a href="organisasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+                    <a href="fasilitas.html" class="text-gray-700 hover:text-blue-600 font-medium navigation-active">Fasilitas</a>
+                    <a href="guru.html" class="text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+                    <a href="kontak.html" class="text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-40 md:hidden p-6">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+            </div>
+            <button id="close-menu" class="text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <a href="index.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+            <a href="tentang.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+            <a href="prestasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+            <a href="organisasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+            <a href="fasilitas.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+            <a href="guru.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+            <a href="kontak.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Fasilitas <span class="gradient-text">Unggulan</span>
+            </h1>
+            <p class="text-xl mb-8">
+                Sarana dan prasarana modern yang mendukung proses belajar mengajar yang optimal
+            </p>
+        </div>
+    </section>
+
+    <!-- Facility Stats -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="stats-number">30+</div>
+                    <p class="text-gray-600">Ruang Kelas</p>
+                </div>
+                <div class="p-6">
+                    <div class="stats-number">8+</div>
+                    <p class="text-gray-600">Laboratorium</p>
+                </div>
+                <div class="p-6">
+                    <div class="stats-number">5+</div>
+                    <p class="text-gray-600">Lapangan Olahraga</p>
+                </div>
+                <div class="p-6">
+                    <div class="stats-number">1</div>
+                    <p class="text-gray-600">Perpustakaan Digital</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="category-filter bg-blue-600 text-white px-6 py-2 rounded-full font-semibold active">
+                    Semua Fasilitas
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    Ruang Kelas
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    Laboratorium
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    Olahraga
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    Seni & Budaya
+                </button>
+                <button class="category-filter bg-white text-gray-700 px-6 py-2 rounded-full font-semibold border border-gray-300 hover:bg-blue-50">
+                    Teknologi
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Facilities -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fasilitas Utama</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Berbagai fasilitas unggulan yang mendukung kegiatan belajar mengajar</p>
+            </div>
+
+            <!-- Ruang Kelas -->
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <div>
+                    <img src="https://placehold.co/600x400" alt="Ruang kelas modern dengan meja kursi ergonomis, proyektor, dan AC di SMA Negeri 1" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div>
+                    <div class="facility-badge bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-chalkboard mr-2"></i>Ruang Kelas
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Ruang Kelas Modern</h3>
+                    <p class="text-gray-600 mb-6">
+                        Ruang kelas kami didesain dengan konsep modern yang nyaman untuk proses belajar mengajar. Setiap ruang dilengkapi dengan fasilitas terkini untuk mendukung pembelajaran yang optimal.
+                    </p>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-3">Fasilitas yang Tersedia:</h4>
+                        <ul class="feature-list text-blue-700">
+                            <li>AC dan sirkulasi udara yang baik</li>
+                            <li>Proyektor dan layar presentasi</li>
+                            <li>Meja dan kursi ergonomis</li>
+                            <li>Wi-Fi high speed</li>
+                            <li>Whiteboard interaktif</li>
+                            <li>Sound system yang jelas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Laboratorium Komputer -->
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <div class="md:order-2">
+                    <img src="https://placehold.co/600x400" alt="Laboratorium komputer modern dengan PC terbaru, jaringan internet cepat, dan ruang ber-AC" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:order-1">
+                    <div class="facility-badge bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-laptop mr-2"></i>Laboratorium
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Laboratorium Komputer</h3>
+                    <p class="text-gray-600 mb-6">
+                        Laboratorium komputer kami dilengkapi dengan perangkat terbaru dan software terkini untuk mendukung pembelajaran teknologi informasi dan komputer.
+                    </p>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-3">Spesifikasi Teknis:</h4>
+                        <ul class="feature-list text-green-700">
+                            <li>40 unit PC dengan processor i5 terbaru</li>
+                            <li>Monitor LED 24 inch</li>
+                            <li>Jaringan internet fiber optic 1Gbps</li>
+                            <li>Software lengkap untuk programming</li>
+                            <li>Ruangan ber-AC dan nyaman</li>
+                            <li>Supervisor untuk bimbingan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perpustakaan -->
+            <div class="grid md:grid-cols-2 gap-12 mb-20">
+                <div>
+                    <img src="https://placehold.co/600x400" alt="Perpustakaan modern dengan rak buku yang rapi, area baca nyaman, dan koleksi buku lengkap" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div>
+                    <div class="facility-badge bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-book mr-2"></i>Perpustakaan
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Perpustakaan Digital</h3>
+                    <p class="text-gray-600 mb-6">
+                        Perpustakaan kami menyediakan lebih dari 15.000 judul buku dan akses ke berbagai jurnal digital. Ruang yang nyaman membuat siswa betah belajar dan membaca.
+                    </p>
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-purple-800 mb-3">Koleksi dan Fasilitas:</h4>
+                        <ul class="feature-list text-purple-700">
+                            <li>15.000+ judul buku cetak</li>
+                            <li>Akses ke 50.000+ e-book</li>
+                            <li>Ruang baca yang nyaman dan tenang</li>
+                            <li>Komputer untuk akses digital</li>
+                            <li>Area diskusi kelompok</li>
+                            <li>Layanan peminjaman online</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Facilities -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fasilitas Pendukung</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Berbagai fasilitas tambahan untuk mendukung kegiatan siswa</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Lapangan Olahraga -->
+                <div class="facility-card bg-white rounded-xl p-6">
+                    <div class="facility-badge bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-basketball-ball mr-2"></i>Olahraga
+                    </div>
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-running text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Lapangan Olahraga</h3>
+                    <p class="text-gray-600 mb-4 text-center">Lapangan multifungsi untuk basket, voli, futsal, dan atletik</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Lapangan basket standar FIBA</li>
+                        <li>• Lapangan voli profesional</li>
+                        <li>• Arena futsal indoor</li>
+                        <li>• Trek atletik 400m</li>
+                    </ul>
+                </div>
+
+                <!-- Laboratorium Sains -->
+                <div class="facility-card bg-white rounded-xl p-6">
+                    <div class="facility-badge bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-flask mr-2"></i>Sains
+                    </div>
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-microscope text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Lab Sains</h3>
+                    <p class="text-gray-600 mb-4 text-center">Laboratorium lengkap untuk praktikum fisika, kimia, dan biologi</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Peralatan praktikum lengkap</li>
+                        <li>• Bahan kimia standar lab</li>
+                        <li>• Mikroskop digital</li>
+                        <li>• Safety equipment lengkap</li>
+                    </ul>
+                </div>
+
+                <!-- Aula Serbaguna -->
+                <div class="facility-card bg-white rounded-xl p-6">
+                    <div class="facility-badge bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-theater-masks mr-2"></i>Serbaguna
+                    </div>
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Aula Serbaguna</h3>
+                    <p class="text-gray-600 mb-4 text-center">Ruang serbaguna untuk kegiatan seni, meeting, dan acara sekolah</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Kapasitas 500 orang</li>
+                        <li>• Sound system profesional</li>
+                        <li>• Lighting theater</li>
+                        <li>• Panggung permanen</li>
+                    </ul>
+                </div>
+
+                <!-- Kantin Sehat -->
+                <div class="facility-card bg-white rounded-xl p-6">
+                    <div class="facility-badge bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-utensils mr-2"></i>Kesehatan
+                    </div>
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-apple-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Kantin Sehat</h3>
+                    <p class="text-gray-600 mb-4 text-center">Kantin dengan menu sehat dan bergizi untuk siswa dan guru</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Menu sehat dan bergizi</li>
+                        <li>• Higienis dan terawat</li>
+                        <li>• Harga terjangkau</li>
+                        <li>• Area makan yang nyaman</li>
+                    </ul>
+                </div>
+
+                <!-- Ruang Musik -->
+                <div class="facility-card bg-white rounded-xl p-6">
+                    <div class="facility-badge bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-music mr-2"></i>Seni
+                    </div>
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-guitar text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Ruang Musik</h3>
+                    <p class="text-gray-600 mb-4 text-center">Studio musik lengkap dengan berbagai alat musik modern</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Alat musik lengkap</li>
+                        <li>• Sound proof room</li>
+                        <li>• Recording equipment</li>
+                        <li>• Ruang latihan band</li>
+                    </ul>
+                </div>
+
+                <!-- UKS -->
+                <div class="facility-card bg-white rounded-xl p-6">
+                    <div class="facility-badge bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-4">
+                        <i class="fas fa-first-aid mr-2"></i>Kesehatan
+                    </div>
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heartbeat text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">UKS</h3>
+                    <p class="text-gray-600 mb-4 text-center">Unit Kesehatan Sekolah dengan peralatan medis lengkap</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Perawat jaga tetap</li>
+                        <li>• Obat-obatan dasar</li>
+                        <li>• Tempat tidur pasien</li>
+                        <li>• Emergency equipment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facility Gallery -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Galeri Fasilitas</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Lihat langsung berbagai fasilitas modern yang kami miliki</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item group relative overflow-hidden rounded-lg">
+                    <img src="https://placehold.co/300x200" alt="Laboratorium komputer modern dengan PC terbaru dan ruang ber-AC yang nyaman" class="w-full h-48 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-semibold">Lab Komputer</span>
+                    </div>
+                </div>
+                <div class="gallery-item group relative overflow-hidden rounded-lg">
+                    <img src="https://placehold.co/300x200" alt="Perpustakaan dengan rak buku modern dan area baca yang nyaman dengan pencahayaan baik" class="w-full h-48 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-semibold">Perpustakaan</span>
+                    </div>
+                </div>
+                <div class="gallery-item group relative overflow-hidden rounded-lg">
+                    <img src="https://placehold.co/300x200" alt="Lapangan basket profesional dengan flooring berkualitas dan ring basket standar" class="w-full h-48 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-semibold">Lapangan Basket</span>
+                    </div>
+                </div>
+                <div class="gallery-item group relative overflow-hidden rounded-lg">
+                    <img src="https://placehold.co/300x200" alt="Laboratorium sains dengan peralatan praktikum lengkap dan meja eksperimen" class="w-full h-48 object-cover transition duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-semibold">Lab Sains</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-2xl font-bold">SMA<span class="text-blue-400">NEGERI1</span></span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Mencetak generasi unggul yang berprestasi, berkarakter, dan siap menghadapi masa depan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Menu Utama</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Beranda</a></li>
+                        <li><a href="tentang.html" class="text-gray-300 hover:text-white">Tentang Sekolah</a></li>
+                        <li><a href="prestasi.html" class="text-gray-300 hover:text-white">Prestasi</a></li>
+                        <li><a href="organisasi.html" class="text-gray-300 hover:text-white">Organisasi</a></li>
+                        <极 href="fasilitas.html" class="text-gray-300 hover:text-white">Fasilitas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Informasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="guru.html" class="text-gray-300 hover:text-white">Guru & Staff</a></li>
+                        <li><a href="berita.html" class="text-gray-300 hover:text-white">Berita</a></li>
+                        <li><a href="galeri.html" class="text-gray-300 hover:text-white">Galeri</a></li>
+                        <li><a href="pendaftaran.html" class="text-gray-300 hover:text-white">Pendaftaran</a></li>
+                        <li><a href="kontak.html" class="text-gray-300 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Kontak Kami</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Jl. Pendidikan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">info@smanegeri1.sch.id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">© 2024 SMA Negeri 1 Unggulan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Category filter functionality
+        const categoryButtons = document.querySelectorAll('.category-filter');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
