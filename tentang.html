@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Sekolah - SMA Negeri 1 Unggulan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navigation-active {
+            border-bottom: 3px solid var(--accent);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+                    <a href="tentang.html" class="text-gray-700 hover:text-blue-600 font-medium navigation-active">Tentang</a>
+                    <a href="prestasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+                    <a href="organisasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+                    <a href="fasilitas.html" class="text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+                    <a href="guru.html" class="text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+                    <a href="kontak.html" class="text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-40 md:hidden p-6">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+            </div>
+            <button id="close-menu" class="text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <a href="index.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+            <a href="tentang.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+            <a href="prestasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+            <a href="organisasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+            <a href="fasilitas.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+            <a href="guru.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+            <a href="kontak.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Tentang <span class="gradient-text">SMA Negeri 1 Unggulan</span>
+            </h1>
+            <img src="https://placehold.co/150x150" alt="Logo Sekolah" class="mx-auto mb-6 rounded-full">
+            <p class="text-xl mb-8">
+                Mencetak generasi unggul yang berprestasi, berkarakter, dan siap menghadapi tantangan masa depan.
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Visi dan Misi Sekolah</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">SMA Negeri 1 Unggulan berkomitmen untuk memberikan pendidikan berkualitas tinggi yang tidak hanya fokus pada aspek akademik, tetapi juga pengembangan karakter dan keterampilan sosial siswa.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Visi</h3>
+                    <p class="text-gray-700 mb-4">
+                        Menjadi sekolah unggulan yang mencetak generasi yang berprestasi, berkarakter, dan siap menghadapi tantangan global.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Misi</h3>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li>Menyediakan pendidikan yang berkualitas dan relevan dengan perkembangan zaman.</li>
+                        <li>Mengembangkan potensi siswa melalui berbagai program ekstrakurikuler.</li>
+                        <li>Membangun karakter siswa yang disiplin, mandiri, dan bertanggung jawab.</li>
+                        <li>Menjalin kerjasama dengan orang tua dan masyarakat untuk mendukung pendidikan.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Sejarah Sekolah</h3>
+                <p class="text-gray-700 mb-4">
+                    SMA Negeri 1 Unggulan didirikan pada tahun 1990 dengan tujuan untuk memberikan pendidikan yang berkualitas kepada generasi muda. Sejak awal berdirinya, sekolah ini telah berkomitmen untuk menciptakan lingkungan belajar yang kondusif dan mendukung perkembangan akademik serta karakter siswa. Dengan berbagai prestasi yang telah diraih, SMA Negeri 1 Unggulan terus berupaya untuk menjadi yang terbaik di bidang pendidikan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-2xl font-bold">SMA<span class="text-blue-400">NEGERI1</span></span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Mencetak generasi unggul yang berprestasi, berkarakter, dan siap menghadapi masa depan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Menu Utama</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Beranda</a></li>
+                        <li><a href="tentang.html" class="text-gray-300 hover:text-white">Tentang Sekolah</a></li>
+                        <li><a href="prestasi.html" class="text-gray-300 hover:text-white">Prestasi</a></li>
+                        <li><a href="organisasi.html" class="text-gray-300 hover:text-white">Organisasi</a></li>
+                        <li><a href="fasilitas.html" class="text-gray-300 hover:text-white">Fasilitas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Informasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="guru.html" class="text-gray-300 hover:text-white">Guru & Staff</a></li>
+                        <li><a href="berita.html" class="text-gray-300 hover:text-white">Berita</a></li>
+                        <li><a href="galeri.html" class="text-gray-300 hover:text-white">Galeri</a></li>
+                        <li><a href="pendaftaran.html" class="text-gray-300 hover:text-white">Pendaftaran</a></li>
+                        <li><a href="kontak.html" class="text-gray-300 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Kontak Kami</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Jl. Pendidikan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">info@smanegeri1.sch.id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">© 2024 SMA Negeri 1 Unggulan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
