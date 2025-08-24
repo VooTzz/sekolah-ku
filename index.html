@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMA Negeri 1 Unggulan - Pendidikan Berkualitas, Masa Depan Cerah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navigation-active {
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .teacher-card {
+            transition: all 0.3s ease;
+        }
+
+        .teacher-card:hover {
+            transform: scale(1.05);
+        }
+
+        .achievement-badge {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .achievement-badge:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium navigation-active">Beranda</a>
+                    <a href="tentang.html" class="text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+                    <a href="prestasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+                    <a href="organisasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+                    <a href="fasilitas.html" class="text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+                    <a href="guru.html" class="text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+                    <a href="kontak.html" class="text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-40 md:hidden p-6">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+            </div>
+            <button id="close-menu" class="text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <a href="index.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b">Beranda</a>
+            <a href="tentang.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b">Tentang</a>
+            <a href="prestasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b">Prestasi</a>
+            <a href="organisasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b">Organisasi</a>
+            <a href="fasilitas.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b">Fasilitas</a>
+            <a href="guru.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b">Guru & Staff</a>
+            <a href="kontak.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium border-b">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        Selamat Datang di
+                        <span class="gradient-text">SMA Negeri 1 Unggulan</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-blue-100">
+                        Membentuk generasi unggul yang berprestasi, berkarakter, dan siap menghadapi masa depan dengan pendidikan berkualitas terbaik.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="pendaftaran.html" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition duration-300 inline-block">
+                            Daftar Sekolah
+                        </a>
+                        <a href="tentang.html" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition duration-300 inline-block">
+                            Jelajahi Sekolah
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400" alt="Gedung sekolah modern dengan arsitektur kontemporer dan lingkungan hijau yang asri di SMA Negeri 1" class="rounded-lg shadow-2xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="stat-number">30+</div>
+                    <p class="text-gray-600">Tahun Berpengalaman</p>
+                </div>
+                <div class="p-6">
+                    <div class="stat-number">1200+</div>
+                    <p class="text-gray-600">Siswa Aktif</p>
+                </div>
+                <div class="p-6">
+                    <div class="stat-number">75+</div>
+                    <p class="text-gray-600">Guru Profesional</p>
+                </div>
+                <div class="p-6">
+                    <div class="stat-number">45+</div>
+                    <p class="text-gray-600">Prestasi Nasional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Sections -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Program Unggulan Kami</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Berbagai program dan fasilitas terbaik untuk mendukung perkembangan akademik dan karakter siswa</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-trophy text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Program Prestasi</h3>
+                    <p class="text-gray-600 mb-4">Pengembangan bakat dan minat siswa melalui berbagai program prestasi akademik dan non-akademik</p>
+                    <a href="prestasi.html" class="text-blue-600 hover:text-blue-700 font-semibold">Lihat Prestasi →</a>
+                </div>
+
+                <div class="card-hover bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Organisasi Siswa</h3>
+                    <p class="text-gray-600 mb-4">Berbagai organisasi dan ekstrakurikuler untuk mengembangkan leadership dan soft skills</p>
+                    <a href="organisasi.html" class="text-blue-600 hover:text-blue-700 font-semibold">Jelajahi Organisasi →</a>
+                </div>
+
+                <div class="card-hover bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-laptop text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Fasilitas Modern</h3>
+                    <p class="text-gray-600 mb-4">Fasilitas pembelajaran terkini untuk mendukung proses belajar mengajar yang optimal</p>
+                    <a href="fasilitas.html" class="text-blue-600 hover:text-blue-700 font-semibold">Lihat Fasilitas →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Berita Terbaru</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Informasi terupdate tentang kegiatan dan perkembangan terkini di sekolah</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-md">
+                    <img src="https://placehold.co/400x250" alt="Siswa SMA Negeri 1 meraih juara 1 olimpiade sains nasional 2024 dengan medali emas" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-3">
+                            Prestasi
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Juara 1 Olimpiade Sains Nasional 2024</h3>
+                        <p class="text-gray-600 mb-4">Siswa kami meraih medali emas dalam kompetisi sains tingkat nasional</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-calendar mr-2"></i>15 Januari 2024
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-md">
+                    <img src="https://placehold.co/400x250" alt="Pembukaan kegiatan pentas seni sekolah tahun 2024 dengan berbagai penampilan menarik" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-3">
+                            Kegiatan
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Pentas Seni Sekolah 2024</h3>
+                        <p class="text-gray-600 mb-4">Menampilkan berbagai bakat seni dan budaya dari siswa-siswi kami</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-calendar mr-2"></i>20 Januari 2024
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-xl overflow-hidden shadow-md">
+                    <img src="https://placehold.co/400x250" alt="Peresmian laboratorium komputer baru dengan perangkat teknologi terbaru di SMA Negeri 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-semibold inline-block mb-3">
+                            Fasilitas
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Laboratorium Komputer Baru</h3>
+                        <p class="text-gray-600 mb-4">Fasilitas komputer terkini untuk mendukung pembelajaran digital</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="far fa-calendar mr-2"></i>5 Februari 2024
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="berita.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition duration-300 inline-block">
+                    Lihat Semua Berita
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Kalender Akademik</h3>
+                    <p class="text-gray-600">Jadwal kegiatan dan akademik sekolah</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-book text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">E-Learning</h3>
+                    <p class="text-gray-600">Platform pembelajaran online</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-download text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Download</h3>
+                    <p class="text-gray-600">Formulir dan dokumen penting</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-question-circle text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">FAQ</h3>
+                    <p class="text-gray-600">Pertanyaan yang sering diajukan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-2xl font-bold">SMA<span class="text-blue-400">NEGERI1</span></span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Membentuk generasi unggul yang berprestasi, berkarakter, dan siap menghadapi masa depan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Menu Utama</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Beranda</a></li>
+                        <li><a href="tentang.html" class="text-gray-300 hover:text-white">Tentang Sekolah</a></li>
+                        <li><a href="prestasi.html" class="text-gray-300 hover:text-white">Prestasi</a></li>
+                        <li><a href="organisasi.html" class="text-gray-300 hover:text-white">Organisasi</a></li>
+                        <li><a href="fasilitas.html" class="text-gray-300 hover:text-white">Fasilitas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Informasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="guru.html" class="text-gray-300 hover:text-white">Guru & Staff</a></li>
+                        <li><a href="berita.html" class="text-gray-300 hover:text-white">Berita</a></li>
+                        <li><a href="galeri.html" class="text-gray-300 hover:text-white">Galeri</a></li>
+                        <li><a href="pendaftaran.html" class="text-gray-300 hover:text-white">Pendaftaran</a></li>
+                        <li><a href="kontak.html" class="text-gray-300 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Kontak Kami</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Jl. Pendidikan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">info@smanegeri1.sch.id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">© 2024 SMA Negeri 1 Unggulan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
+
