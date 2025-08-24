@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - SMA Negeri 1 Unggulan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navigation-active {
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .contact-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
+        }
+
+        .input-focus:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</span></span>
+                </div>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+                    <a href="tentang.html" class="text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+                    <a href="prestasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Prestasi</a>
+                    <a href="organisasi.html" class="text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+                    <a href="fasilitas.html" class="text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+                    <a href="guru.html" class="text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+                    <a href="kontak.html" class="text-gray-700 hover:text-blue-600 font-medium navigation-active">Kontak</a>
+                </div>
+
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-40 md:hidden p-6">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="text-xl font-bold text-gray-800">SMA<span class="text-blue-600">NEGERI1</极></span>
+            </div>
+            <button id="close-menu" class="text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="space-y-4">
+            <a href="index.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Beranda</a>
+            <a href="tentang.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Tentang</a>
+            <a href="prestasi.html" class="block py-3 text-gray极700 hover:text-blue-600 font-medium">Prestasi</a>
+            <a href="organisasi.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Organisasi</a>
+            <a href="fasilitas.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Fasilitas</a>
+            <a href="guru.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Guru & Staff</a>
+            <a href="kontak.html" class="block py-3 text-gray-700 hover:text-blue-600 font-medium">Kontak</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Hubungi <span class="gradient-text">Kami</span>
+            </h1>
+            <p class="text-xl mb-8">
+                Kami siap membantu dan menjawab semua pertanyaan Anda tentang SMA Negeri 1 Unggulan
+            </p>
+        </div>
+    </section>
+
+    <!-- Quick Contact -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- WhatsApp Button -->
+                <div class="contact-card bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fab fa-whatsapp text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">WhatsApp</h3>
+                    <p class="text-gray-600 mb-4">Hubungi kami langsung via WhatsApp untuk respon cepat</p>
+                    <a href="https://wa.me/628123456789?text=Halo%20SMA%20Negeri%201%2C%20saya%20ingin%20bertanya%20tentang..." 
+                       class="whatsapp-btn text-white px-6 py-3 rounded-lg font-semibold inline-block transition duration-300">
+                        <i class="fab fa-whatsapp mr-2"></i>Chat Sekarang
+                    </a>
+                </div>
+
+                <!-- Telepon -->
+                <div class="contact-card bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Telepon</h3>
+                    <p class="text-gray-600 mb-4">Hubungi kami pada jam kerja untuk informasi lengkap</p>
+                    <a href="tel:+622112345678" 
+                       class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold inline-block transition duration-300">
+                        <i class="fas fa-phone mr-2"></i>(021) 1234-5678
+                    </a>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-card bg-white rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Email</h3>
+                    <p class="text-gray-600 mb-4">Kirim pertanyaan detail melalui email kami</p>
+                    <a href="mailto:info@smanegeri1.sch.id" 
+                       class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold inline-block transition duration-300">
+                        <i class="fas fa-envelope mr-2"></i>Kirim Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Info -->
+    <section class="bg-gray-50 py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h2>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Nama Lengkap</label>
+                                <input type="text" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       placeholder="Masukkan nama lengkap"
+                                       required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Email</label>
+                                <input type="email" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                       placeholder="email@contoh.com"
+                                       required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium">Nomor WhatsApp</label>
+                            <input type="tel" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                   placeholder="08xxxxxxxxxx"
+                                   required>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium">Subjek</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none" required>
+                                <option value="">Pilih subjek</option>
+                                <option value="pendaftaran">Informasi Pendaftaran</option>
+                                <option value="akademik">Informasi Akademik</option>
+                                <option value="prestasi">Informasi Prestasi</option>
+                                <option value="organisasi">Informasi Organisasi</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2 font-medium">Pesan</label>
+                            <textarea 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none"
+                                rows="5"
+                                placeholder="Tulis pesan Anda di sini..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition duration-300">
+                            <i class="fas fa-paper-plane mr-2"></i>Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Informasi Kontak</h2>
+                    
+                    <!-- Alamat -->
+                    <div class="bg-white rounded-xl p-6 mb-6">
+                        <div class="flex items-start mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">Alamat Sekolah</h3>
+                                <p class="text-gray-600">
+                                    Jl. Pendidikan No. 123<br>
+                                    Jakarta Selatan 12540<br>
+                                    DKI Jakarta, Indonesia
+                                </p>
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=SMA+Negeri+1+Unggulan+Jakarta" 
+                           target="_blank"
+                           class="text-blue-600 hover:text-blue-700 font-semibold inline-flex items-center">
+                            <i class="fas fa-directions mr-2"></i>Lihat di Google Maps
+                        </a>
+                    </div>
+
+                    <!-- Jam Operasional -->
+                    <div class="bg-white rounded-xl p-6 mb-6">
+                        <div class="flex items-start mb-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-green-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-800 mb-2">Jam Operasional</h3>
+                                <div class="space-y-2 text-gray-600">
+                                    <div class="flex justify-between">
+                                        <span>Senin - Jumat</span>
+                                        <span>07:00 - 16:00 WIB</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Sabtu</span>
+                                        <span>08:00 - 14:00 WIB</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Minggu</span>
+                                        <span class="text-red-500">Tutup</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="bg-white rounded-xl p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Media Sosial</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-pink-600">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
+                                <i class="fab fa-youtube text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Lokasi Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kunjungi sekolah kami di lokasi yang strategis dan mudah dijangkau</p>
+            </div>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8225614152942!3d-6.208662295493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1633680000000!5m2!1sid!2sid" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bus text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Transportasi Umum</h3>
+                    <p class="text-gray-600">Akses mudah dengan bus, transjakarta, dan commuter line</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-car text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Parkir Luas</h3>
+                    <p class="text-gray-600">Area parkir yang nyaman untuk kendaraan pribadi</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-utensils text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Fasilitas Umum</h3>
+                    <p class="text-gray-600">Dekat dengan pusat perbelanjaan dan fasilitas umum</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contact -->
+    <section class="bg-blue-600 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold text-white mb-6">Kontak Darurat</h2>
+            <p class="text-blue-100 mb-8">Untuk keadaan darurat di luar jam operasional, hubungi nomor berikut:</p>
+            <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                <div class="bg-white rounded-lg p-6">
+                    <i class="fas fa-phone-alt text-red-600 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Garda Darurat</h3>
+                    <p class="text-gray-600 mb-3">24/7 Emergency Service</p>
+                    <a href="tel:+628123456789" class="text-red-600 font-semibold text-lg">0812-3456-789</a>
+                </div>
+                <div class="bg-white rounded-lg p-6">
+                    <i class="fas fa-first-aid text-red-600 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">UKS Darurat</h3>
+                    <p class="text-gray-600 mb-3">Pelayanan kesehatan darurat</p>
+                    <a href="tel:+628987654321" class="text-red-600 font-semibold text-lg">0898-7654-321</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="text-2xl font-bold">SMA<span class="text-blue-400">NEGERI1</span></span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Mencetak generasi unggul yang berprestasi, berkarakter, dan siap menghadapi masa depan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Menu Utama</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Beranda</a></li>
+                        <li><a href="tentang.html" class="text-gray-300 hover:text-white">Tentang Sekolah</a></极>
+                        <li><a href="prestasi.html" class="text-gray-300 hover:text-white">Prestasi</a></li>
+                        <li><a href="organisasi.html" class="text-gray-300 hover:text-white">Organisasi</a></li>
+                        <li><a href="fasilitas.html" class="text-gray-300 hover:text-white">Fasilitas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Informasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="guru.html" class="text-gray-300 hover:text-white">Guru & Staff</a></li>
+                        <li><a href="berita.html" class="text-gray-300 hover:text-white">Berita</a></li>
+                        <li><a href="galeri.html" class="text-gray-300 hover:text-white">Galeri</a></li>
+                        <li><a href="pendaftaran.html" class="text-gray-300 hover:text-white">Pendaftaran</a></li>
+                        <li><a href="kontak.html" class="text-gray-300 hover:text-white">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Kontak Kami</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">Jl. Pendidikan No. 123, Jakarta</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">(021) 1234-5678</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                            <span class="text-gray-300">info@smanegeri1.sch.id</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">© 2024 SMA Negeri 1 Unggulan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const subject = this.querySelector('select').value;
+            const message = this.querySelector('textarea').value;
+
+            // Create WhatsApp message
+            const whatsappMessage = `Halo SMA Negeri 1,\n\nSaya ${name} ingin bertanya tentang:\n\nSubjek: ${subject}\nPesan: ${message}\n\nEmail: ${email}\nTelepon: ${phone}`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Redirect to WhatsApp
+            window.open(`https://wa.me/628123456789?text=${encodedMessage}`, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message (you can add a toast notification here)
+            alert('Pesan Anda akan dibuka di WhatsApp. Terima kasih!');
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
